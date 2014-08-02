@@ -24,15 +24,12 @@ define Package/luci-app-ffwizard-berlin/description
 endef
 
 define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./luasrc $(PKG_BUILD_DIR)/
 endef
 
 define Build/Configure
 endef
 
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR)/luasrc
 endef
 
 define Package/luci-app-ffwizard-berlin/install
@@ -40,10 +37,10 @@ define Package/luci-app-ffwizard-berlin/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/tools
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/view
-	$(CP) $(PKG_BUILD_DIR)/luasrc/controller/* $(1)/usr/lib/lua/luci/controller
-	$(CP) $(PKG_BUILD_DIR)/luasrc/model/* $(1)/usr/lib/lua/luci/model
-	$(CP) $(PKG_BUILD_DIR)/luasrc/tools/* $(1)/usr/lib/lua/luci/tools
-	$(CP) $(PKG_BUILD_DIR)/luasrc/view/* $(1)/usr/lib/lua/luci/view
+	$(CP) ./luasrc/controller/* $(1)/usr/lib/lua/luci/controller
+	$(CP) ./luasrc/model/* $(1)/usr/lib/lua/luci/model
+	$(CP) ./luasrc/tools/* $(1)/usr/lib/lua/luci/tools
+	$(CP) ./luasrc/view/* $(1)/usr/lib/lua/luci/view
 	$(INSTALL_DIR) $(1)/www
 	$(CP) ./htdocs/* $(1)/www
 endef
