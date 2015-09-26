@@ -1,8 +1,6 @@
 config broker
-	list address 'x.y.z.w:8942'
-	list address 'x.y.z.w:53'
-	list address 'x.y.z.w:123'
+	list address 'ffvpn.fe80.eu:8942'
 	option uuid 'abcd'
 	option interface 'l2tp0'
-	option limit_bw_down '1024'
+	option limit_bw_down '102400'
 	option enabled '0'
