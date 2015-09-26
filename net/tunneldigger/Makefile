@@ -38,6 +38,8 @@ define Package/tunneldigger/install
 	$(INSTALL_BIN) ./files/tunneldigger.init $(1)/etc/init.d/tunneldigger
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_DATA) ./files/config.default $(1)/etc/config/tunneldigger
+	$(INSTALL_DIR) $(1)/etc/uci-defaults
+	$(INSTALL_DATA) ./files/tunneldigger.uci-defaults $(1)/etc/uci-defaults/99-tunneldigger
 endef
 
 define Package/tunneldigger/conffiles

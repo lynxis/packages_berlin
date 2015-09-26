@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ ! -e /sys/class/net/eth0/address ] ; then
+	logger -s "Can not get mac address for tunneldigger migration. No mac address for eth0."
+	exit 1
+fi
+
+MAC=$(cat /sys/class/net/eth0/address)
+
+if [ -z "$MAC" ] ; then
+	logger -s "Can not get mac address for tunneldigger migration. eth0/address returns empty."
+	exit 1
+fi
+
+uci set tunneldigger.@broker[0].uuid="$MAC"
+uci commit tunneldigger
